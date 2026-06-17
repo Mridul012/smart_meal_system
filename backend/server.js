@@ -15,6 +15,8 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5001',
   'https://smart-meal-system-fbaoqk4m9-mriduls-projects-270d99d3.vercel.app',
+  'https://smart-meal-system-nu.vercel.app',
+  'https://smart-meal-system-git-main-mriduls-projects-270d99d3.vercel.app',
 ];
 
 app.use(cors({
