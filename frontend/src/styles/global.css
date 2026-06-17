@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0f0f0f;
+  color: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0f0f0f; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #444444; }
+
+/* ── Input focus — can't do :focus with inline styles ── */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #e63946 !important;
+}
+
+/* ── Animations ── */
+@keyframes scanLine {
+  0%   { top: 0; }
+  50%  { top: calc(100% - 2px); }
+  100% { top: 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(110%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* ── Scan line overlay element ── */
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e63946;
+  box-shadow: 0 0 10px #e63946, 0 0 4px #e63946;
+  animation: scanLine 2s ease-in-out infinite;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ── Spinner ── */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #2a2a2a;
+  border-top-color: #e63946;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+/* ── Toast slide in ── */
+.toast-enter {
+  animation: slideInRight 0.25s ease forwards;
+}
+
+/* ── Table row hover (can't do :hover inline) ── */
+.admin-row:hover td {
+  background-color: #222222 !important;
+}
+
+/* ── Segmented control inactive tab hover ── */
+.seg-inactive:hover {
+  color: #f5f5f5 !important;
+  background-color: #2a2a2a !important;
+}
+
+/* ── Button hover states ── */
+.btn-accent:hover  { background-color: #c1121f !important; }
+.btn-logout:hover  { color: #e63946 !important; }
+.btn-delete:hover  { color: #e63946 !important; }
+.btn-cancel:hover  { border-color: #444 !important; }
+.btn-confirm:hover { background-color: #16a34a !important; }
+
+/* ── Date input calendar icon color ── */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) opacity(0.4);
+  cursor: pointer;
+}
